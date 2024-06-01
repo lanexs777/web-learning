@@ -4,8 +4,6 @@
 It's crutial to understand how node, typescript compiler or other tools do module resolution.
 
 ### 1.1 Node js module resolution
-[Jump to Make your Typescript monorepo live](#2-make-your-typescript-monorepo-live)
-
 
 1. Core Modules
    - **First Check**: Node.js checks if the module is a core module (e.g., `fs`, `path`).
