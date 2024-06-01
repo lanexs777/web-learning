@@ -45,3 +45,41 @@ It's crutial to understand how node, typescript compiler or other tools do modul
           - `node_modules/foo/index.js`
           - `node_modules/foo/index.json`
           - `node_modules/foo/index.node`
+## 2. Make your Typescript monorepo live
+Best strategie to make TypeScript monorepos feel "alive" during development. The goal is to have TypeScript code changes propagate instantly across the monorepo without needing a build/compile step. 
+
+### Use publishConfig
+Overview: Ensures TypeScript and Node.js resolve package imports to local .ts files during development, and to compiled .js files in production.
+
+```json
+{
+  "name": "pkg-a",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "exports": {
+      ".": {
+        "import": "./lib/index.js",
+        "require": "./lib/index.js",
+        "types": "./lib/index.d.ts"
+      },
+      "./package.json": "./package.json"
+    }
+  }
+}
+```
+
+
+
+
+
