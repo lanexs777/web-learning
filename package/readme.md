@@ -48,6 +48,7 @@ It's crutial to understand how node, typescript compiler or other tools do modul
           - `node_modules/foo/index.node`
 ## 2. Make your Typescript monorepo live
 Best strategie to make TypeScript monorepos feel "alive" during development. The goal is to have TypeScript code changes propagate instantly across the monorepo without needing a build/compile step. 
+inspired by Colin McDonnell's [post](https://colinhacks.com/essays/live-types-typescript-monorepo)
 
 ### Use publishConfig
 Overview: Ensures TypeScript and Node.js resolve package imports to local .ts files during development, and to compiled .js files in production.
