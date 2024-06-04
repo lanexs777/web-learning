@@ -80,6 +80,13 @@ Overview: Ensures TypeScript and Node.js resolve package imports to local .ts fi
   }
 }
 ```
+## 3. package.json entry demystified
+
+### `main` 
+The `main` field defines the entry point of a package when imported by name via a node_modules lookup.
+If `main` is not set, it defaults to `index.js` in the package's root folder.
+
+
 
 
 
