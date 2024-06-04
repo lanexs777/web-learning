@@ -86,6 +86,31 @@ Overview: Ensures TypeScript and Node.js resolve package imports to local .ts fi
 The `main` field defines the entry point of a package when imported by name via a node_modules lookup.
 If `main` is not set, it defaults to `index.js` in the package's root folder.
 
+### `export`
+The "exports" field allows defining the entry points of a package when imported by name loaded either via a node_modules lookup or a self-reference to its own name. It is supported in Node.js 12+ as an alternative to the "main" that can support defining subpath exports and conditional exports while encapsulating internal unexported modules.
+
+> [!NOTE]
+> Subpath exports: For packages with a small number of exports or imports, we recommend explicitly listing each exports subpath entry. But for packages that have large numbers of subpaths, this might cause package.json bloat and maintenance issues.
+> ```json
+> {
+>    "exports": {
+>       ".": "./index.js",
+>       "./submodule.js": "./src/submodule.js"
+>       }
+> } 
+> ```
+
+> [!NOTE]
+> Conditional exports: Conditional exports provide a way to map to different paths depending on certain conditions. They are supported for both CommonJS and ES module imports.
+> ```json
+> {
+>    "exports": {
+>    "import": "./index-module.js",
+>    "require": "./index-require.cjs"
+>    },
+>    "type": "module"
+> }
+> ```
 
 
 
